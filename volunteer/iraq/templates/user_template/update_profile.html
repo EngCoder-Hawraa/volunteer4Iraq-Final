@@ -1,0 +1,127 @@
+{% extends 'user_template/base_template.html' %} {% load static %}{% load widget_tweaks %}
+<!-- /* ======== Start Profile Page ======== */ -->
+{% block custom_css %}
+
+<style>
+    .custom-file {
+        background-color: #6F2DBD;
+        width: 50px;
+        height: 30px;
+        position: relative;
+        margin: 0px 200px 20px 360px;
+        z-index: 1;
+    }
+    
+    .custom-file>span {
+        font-size: 12px;
+    }
+    
+    .custom-file input[type="file"] {
+        width: 100%;
+        height: 100%;
+        margin: -40px -10px 0px 30px;
+        opacity: 0;
+        border-radius: 27px;
+    }
+</style>
+{% endblock custom_css %} {% block main_content %}
+<div class="pb-5 pt-3 background4">
+    <div class="bg-white mt-4 mr-4 ml-3 Boxshadow pb-5 Borders">
+        <form role="form" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <p class="font-weight-bold text-primary mt-5 text-center"> الملف الشخصي</p>
+                    <img style="width:180px;height:180px;border:9px solid white;margin-right:25%" class="mt-sm-2 mt-md-5 bg-primary rounded-circle Boxshadow" src="/media/{{user.people.profile_pic}}" alt="الصورة الشخصية">
+                    <div style="margin-top:-34px">
+                        <span class="Boxshadow border-0 row badge badge-warning rounded-circle text-white custom-file" style="width:31px;height:31px;margin-right:46%;" data-placement="top">
+                            <i  data-target="#profile_pic" class="dd fas fa-camera fa-lg mr-1 mt-1" data-placement="top" title="تعديل صورة الملف الشخصي"></i>
+                            {% render_field form.profile_pic style="margin-right:-50px;margin-top:0px;opacity:0" placeholder="" %}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-11 col-md-7">
+                    <div class="row mt-5 col-sm-12 col-md-12">
+                        <div class="row mt-sm-0 mt-md-5">
+                            <div class="col-sm-11 col-lg-6">
+                                <label class="mr-4 font-size3 text-dark font-weight-bold mt-3">اسم المستخدم</label>
+                                <div>
+                                    <input style="height:50px" type="text" class="mr-4 mt-2 form-control border-0 Boxshadow bg-dark text-white" placeholder="الاسم" name="user" value="{{user.username}}">
+                                </div>
+                            </div>
+                            <div class="col-sm-11 col-lg-6">
+                                <label class="mr-4 font-size3 text-dark font-weight-bold mt-3">البريد الالكتروني</label>
+                                <input style="height:50px" type="email" class="mr-4 mt-2 form-control border-0 Boxshadow bg-dark text-white" placeholder="البريد الالكتروني" name="email" value="{{ user.email }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-11 col-lg-6">
+                                <!--  -->
+                                <label class="mr-4 font-size3 text-dark font-weight-bold mt-3">{{form.phone.label}}</label>
+                                <div>
+                                    {% render_field form.phone style="height:50px" class="mr-4 mt-2 form-control border-0 Boxshadow bg-dark text-white" placeholder="" %}
+                                </div>
+                            </div>
+                            <div class="col-sm-11 col-lg-6">
+                                <!--  -->
+                                <label class="mr-4 font-size3 text-dark font-weight-bold mt-3">{{form.region.label}}</label>
+                                <div>
+                                    {% render_field form.region style="height:50px" class="mr-4 mt-2 form-control border-0 Boxshadow bg-dark text-white" placeholder="" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-11 col-lg-6">
+                                <!--  -->
+                                <label class="mr-4 font-size3 text-dark font-weight-bold mt-3">{{form.birth.label}}</label>
+                                <div>
+                                    {% render_field form.birth type="date" style="height:50px" class="mr-4 mt-2 form-control border-0 Boxshadow bg-dark text-white" placeholder="" %}
+                                </div>
+                            </div>
+                            <div class="col-sm-11 col-lg-6">
+                                <!--  -->
+                                <label class="mr-4 font-size3 text-dark font-weight-bold mt-3">{{form.gender.label}}</label>
+                                <div>
+                                    {% render_field form.gender style="height:50px" class="mr-4 mt-2 form-control border-0 Boxshadow bg-dark text-white" placeholder="" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-11 col-lg-6">
+                                <!--  -->
+                                <label class="mr-4 font-size3 text-dark font-weight-bold mt-3">{{form.employee.label}}</label>
+                                <div>
+                                    {% render_field form.employee style="height:50px" class="mr-4 mt-2 form-control border-0 Boxshadow bg-dark text-white" placeholder="" %}
+                                </div>
+                            </div>
+                            <div class="col-sm-11 col-lg-6">
+                                <!--  -->
+                                <label class="mr-4 font-size3 text-dark font-weight-bold mt-3">{{form.facebook.label}}</label>
+                                <div>
+                                    {% render_field form.facebook style="height:50px" class="mr-4 mt-2 form-control border-0 Boxshadow bg-dark text-white" placeholder="" %}
+                                </div>
+                            </div>
+                        </div>
+                        <button style="width:100%;height:60px" type="submit" class="mt-5 mb-5 mr-5 font-weight-bolder border-0 text-center text-white Borders1 bg-primary">
+                        <input type="hidden" name="user.id" value="{{user.id}}">
+                        حفظ</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- </div> -->
+        <div class="background4 m-5">
+            {% if messages %} {% for message in messages %} {% if message.tags == 'success' %}
+            <div class="alert alert-success text-center Boxshadow border-0 Borders4 text-primary font-weight-bold">{{ message }}</div>
+            {% elif message.tags == 'error' %}
+            <div class="alert alert-danger text-center Boxshadow border-0 Borders4 text-primary font-weight-bold">{{ message }}</div>
+            {% endif %} {% endfor %} {% endif %}
+        </div>
+    </div>
+
+
+
+
+
+    {% endblock main_content %}
+    <!-- /* ======== End Profile Page ======== */ -->

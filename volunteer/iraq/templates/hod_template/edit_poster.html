@@ -1,0 +1,67 @@
+{% extends 'hod_template/base_template.html' %} {% load static %}{% load widget_tweaks %}
+<!-- /* ======== Start Edit Poster Page ======== */ -->
+
+{% block main_content %}
+
+<div class="background2 pb-5 pt-5">
+    <div class="row background Boxshadow" style="margin-right:20px;margin-left:20px;border-radius:10px 10px 0px 0px">
+        <div class="col pr-5 pt-4 pb-4">تعديل الاعلان</div>
+    </div>
+    <div class="bg-white Boxshadow pb-5 Borders mr-4 ml-4">
+        <form role="form" action="{% url 'edit_poster' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="modal-body">
+                <input type="hidden" value="{{ poster.id }}" name="id">
+                <div class="form-group mt-3">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.name.label}}</label>
+                    <!--  -->
+                    {% render_field form.name class="m-2 col-sm-12 col-md-9 Boxshadow Borders4 H2 Borders7" placeholder="" %}
+                </div>
+                <div class="form-group mt-3">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.region.label}}</label>
+                    <!--  -->
+                    {% render_field form.region class="m-2 col-sm-12 col-md-9 Boxshadow Borders4 H2 Borders7" placeholder="" %}
+                </div>
+                <div class="form-group mt-3">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.place.label}}</label>
+                    <!--  -->
+                    {% render_field form.place class="m-2 col-sm-12 col-md-9 Boxshadow Borders4 H2 Borders7" placeholder="" %}
+                </div>
+                <div class="form-group mt-3">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.classification.label}}</label>
+                    <!--  -->
+                    {% render_field form.classification class="m-2 col-sm-12 col-md-9 Boxshadow Borders4 H2 Borders7" placeholder="" %}
+                </div>
+                <div class="form-group mt-3">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.posts.label}}</label>
+                    <!--  -->
+                    {% render_field form.posts class="m-2 col-sm-12 col-md-9 Boxshadow Borders4 Borders7" placeholder="" %}
+                </div>
+                <div class="form-group row">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.poster_image.label}}</label>
+                    <!--  -->
+                    <img class="mt-2 float-left col-md-2" src="/media/{{ poster.poster_image }} " style="height:100px">
+                    <!--  -->
+                    {% render_field form.poster_image class="m-2 col-sm-12 col-md-7 Boxshadow Borders4 H2 Borders7" style="line-height:50px" placeholder="" %}
+                </div>
+                <div class="form-group mt-3">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.date_poster.label}}</label>
+                    <!--  -->
+                    {% render_field form.date_poster type="date" class="m-2 col-sm-12 col-md-9 Boxshadow Borders4 H2 Borders7" placeholder="" %}
+                </div>
+                <div class="mr-5 mt-5 ml-5 mb-2">
+                    <button type="submit" name="submit" class="col-sm-4 col-md-4 float-md-center text-center Borders1 bg-primary border-0 text-white Boxshadow H2" style="width:100%;height:50px">
+                        <i class="fas fa-check"></i> تعديل
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!-- <div class="ml-5 mb-2 " style="margin-right:55px ">
+            <button class="text-center Borders1 bg-danger border-0 text-white Boxshadow " onclick=document.location="{% url 'poster' %} " style="width:97%;height:50px ">
+                <i class="fas fa-times "></i> اغلاق
+            </button>
+        </div> -->
+    </div>
+</div>
+{% endblock main_content %}
+<!-- /* ======== End Edit poster Page ======== */ -->

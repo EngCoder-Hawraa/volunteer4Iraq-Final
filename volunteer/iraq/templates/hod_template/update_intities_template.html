@@ -1,0 +1,81 @@
+{% extends 'hod_template/base_template.html' %}{% load static %}{% load widget_tweaks %}
+<!-- /* ======== Start Edit Intities Page ======== */ -->
+{% block main_content %}
+<div class="background2 pb-5 pt-5">
+    <div class="row background Boxshadow" style="margin-right:20px;margin-left:20px;border-radius:10px 10px 0px 0px">
+        <div class="col pr-5 pt-4 pb-4">تعديل معلومات المؤسسة</div>
+    </div>
+    <div class="bg-white Boxshadow pb-5 Borders mr-4 ml-4">
+        <form role="form" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="modal-body">
+                <div class="form-group mt-3 row">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.name.label}}</label>
+                    <!--  -->
+                    {% render_field form.name class="input m-1 col-sm-12 col-md-9 Boxshadow Borders4 H2 Borders7" placeholder="" %}
+                </div>
+                <div class="form-group row">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.region.label}}</label>
+                    <!--  -->
+                    {% render_field form.region class="select m-1 col-sm-12 col-md-9 Boxshadow Borders4 H2 Borders7" placeholder="" %}
+                    <!--  -->
+                </div>
+                <div class="form-group row">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.email.label}}</label>
+                    <!--  -->
+                    {% render_field form.email class="select m-1 col-sm-12 col-md-9 Boxshadow Borders4 H2 Borders7" placeholder="" %}
+                    <!--  -->
+                </div>
+                <div class="form-group row">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.facebook.label}}</label>
+                    <!--  -->
+                    {% render_field form.facebook class="select m-1 col-sm-12 col-md-9 Boxshadow Borders4 H2 Borders7" placeholder="" %}
+                    <!--  -->
+                </div>
+                <div class="form-group row">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.created.label}}</label>
+                    <!--  -->
+                    {% render_field form.created type="date" class="m-1 col-sm-12 col-md-9 Boxshadow Borders4 H2 Borders7" placeholder="" %}
+                </div>
+                <div class="form-group row">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.classification.label}}</label>
+                    <!--  -->
+                    {% render_field form.classification class="m-1 col-sm-12 col-md-9 Boxshadow Borders4 H2 Borders7" placeholder="" %}
+                </div>
+                <div class="form-group row">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.abstract.label}}</label>
+                    <!--  -->
+                    {% render_field form.abstract class="m-1 col-sm-12 col-md-9 Boxshadow Borders4 Borders7" placeholder="" %}
+                </div>
+                <div class="form-group row">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.works.label}}</label>
+                    <!--  -->
+                    {% render_field form.works class="m-1 col-sm-12 col-md-9 Boxshadow Borders4 Borders7" placeholder="" %}
+                </div>
+                <div class="form-group row">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.permission.label}}</label>
+                    <!--  -->
+                    <img class="mt-2 float-left col-md-2" src="/media/{{ user.intity.permission }} " style="height:100px">
+                    <!--  -->
+                    {% render_field form.permission class="m-2 col-sm-12 col-md-7 Boxshadow Borders4 H2 Borders7" style="line-height:50px" placeholder="" %}
+                </div>
+                <div class="form-group row">
+                    <label class="control-label float-right col-md-2 mt-md-3 text-md-center">{{form.intities_pic.label}}</label>
+                    <!--  -->
+                    <img class="mt-2 float-left col-md-2" src="/media/{{ user.intity.intities_pic }} " style="height:100px">
+                    <!--  -->
+                    {% render_field form.intities_pic class="m-2 col-sm-12 col-md-7 Boxshadow Borders4 H2 Borders7" style="line-height:50px" placeholder="" %}
+                </div>
+                <!-- Modal footer -->
+                <div class="mr-5 mt-5 ml-5 mb-2">
+                    <button type="submit" name="submit" class="col-sm-4 col-md-4 float-md-center text-center Borders1 bg-primary border-0 text-white Boxshadow H2">
+                        <input type="hidden" name="id" value="{{intity.id}}">
+                        <i class="fas fa-check"></i> تعديل
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock main_content %}
+<!-- /* ======== End Edit Member Page ======== */ -->
